@@ -245,15 +245,57 @@
             <div class="slideshow-container">
                 <h3 class="slideshow-header">Images</h3>
                 <div class="mySlidesImage fade">
-                    <img src="ed2bfcdf-bb1f-47f5-b5ea-3fe86a75c66a.jpg" alt="Slide 1">
+                    <img src="tatak.jpg" alt="Slide 1">
                 </div>
                 <div class="mySlidesImage fade">
-                    <img src="https://via.placeholder.com/600x400" alt="Slide 2">
+                    <img src="cute-anime-girl-shy-gift-box.jpg" alt="Slide 2">
                 </div>
                 <a class="prev" onclick="plusSlides(-1, 'image')">&#10094;</a>
                 <a class="next" onclick="plusSlides(1, 'image')">&#10095;</a>
             </div>
         </div>
     </div>
+</body>
+</html>
+<script>
+    let videoIndex = 1;
+    let imageIndex = 1;
+
+    function plusSlides(n, type) {
+        if (type === 'video') {
+            videoIndex += n;
+            let videos = document.getElementsByClassName("mySlidesVideo");
+            if (videoIndex > videos.length) { videoIndex = 1 }
+            if (videoIndex < 1) { videoIndex = videos.length }
+            showSlides(videoIndex, 'video');
+        } else if (type === 'image') {
+            imageIndex += n;
+            let images = document.getElementsByClassName("mySlidesImage");
+            if (imageIndex > images.length) { imageIndex = 1 }
+            if (imageIndex < 1) { imageIndex = images.length }
+            showSlides(imageIndex, 'image');
+        }
+    }
+
+    function showSlides(n, type) {
+        let slides;
+        if (type === 'video') {
+            slides = document.getElementsByClassName("mySlidesVideo");
+        } else if (type === 'image') {
+            slides = document.getElementsByClassName("mySlidesImage");
+        }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        if (type === 'video') {
+            slides[n - 1].style.display = "block";
+        } else if (type === 'image') {
+            slides[n - 1].style.display = "block";
+        }
+    }
+
+    showSlides(videoIndex, 'video');
+    showSlides(imageIndex, 'image');
+</script>
 </body>
 </html>
